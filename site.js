@@ -25,11 +25,14 @@
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = v;
       else el.textContent = v;
     });
-    try { localStorage.setItem('om-lang', l); } catch (e) {}
     if (typeof updateCalc === 'function') updateCalc();
   }
   langBtns.forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-set');
+      setLang(l);
+      try { localStorage.setItem('om-lang', l); } catch (e) {} // only when the visitor chooses
+    });
   });
 
   /* ---------- header: solid on scroll, mobile menu ---------- */
