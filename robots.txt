@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.orianamedi.com/sitemap.xml
+Sitemap: https://orianamedi.com/sitemap.xml

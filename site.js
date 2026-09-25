@@ -160,8 +160,8 @@
     var P = FEES[state.plan], sl = lang() === 'sl', total, br;
     if (state.type === 0) {
       total = P.base + (state.lots - 1) * P.extra;
-      br = eur(P.base) + (sl ? ' prvi sklop' : ' first lot') +
-        (state.lots > 1 ? ' + ' + (state.lots - 1) + ' × ' + eur(P.extra) + (sl ? ' dodatni sklopi' : ' additional lots') : '');
+      br = eur(P.base) + (sl ? ' prvi sklop' : ' first product group') +
+        (state.lots > 1 ? ' + ' + (state.lots - 1) + ' × ' + eur(P.extra) + (sl ? ' dodatni sklopi' : ' additional product groups') : '');
     } else {
       total = P.rebid;
       br = eur(P.rebid) + (sl ? ' ponovna ponudba, dokumenti se ponovno uporabijo' : ' re-bid, documents reused');
@@ -175,6 +175,40 @@
     });
   }
   window.updateCalc = updateCalc;
+  var reqBtn = document.querySelector('.js-calc-req');
+  if (reqBtn) reqBtn.addEventListener('click', function () {
+    var sl = lang() === 'sl', P = FEES[state.plan];
+    var planName = state.plan === 0 ? 'Tender Watch' : (sl ? 'Standard / Tender Alerts' : 'Standard / Tender Alerts');
+    var type = state.type === 0 ? (sl ? 'nova ponudba' : 'new bid') : (sl ? 'ponovna ponudba ob odpiranju sporazuma' : 're-bid at framework reopening');
+    var lines = sl ? [
+      'Zanima nas priprava in oddaja ponudbe:',
+      '- Paket: ' + planName,
+      '- Vrsta ponudbe: ' + type,
+      state.type === 0 ? '- Število sklopov (skupin izdelkov): ' + state.lots : null,
+      '- Informativni izračun: ' + calc.querySelector('.js-sum').textContent,
+      '',
+      'Razpis / naročnik (če je znan): ',
+      'Skupine izdelkov / naši izdelki: '
+    ] : [
+      'We are interested in bid preparation and submission:',
+      '- Plan: ' + planName,
+      '- Bid type: ' + type,
+      state.type === 0 ? '- Number of product groups: ' + state.lots : null,
+      '- Indicative fee: ' + calc.querySelector('.js-sum').textContent,
+      '',
+      'Tender / buyer (if known): ',
+      'Product groups / our products: '
+    ];
+    var form = document.querySelector('form.js-form');
+    if (!form) return;
+    var sel = form.querySelector('select[name="topic"]');
+    if (sel) sel.value = 'tenderwatch';
+    var ta = form.querySelector('textarea[name="message"]');
+    ta.value = lines.filter(function (x) { return x !== null; }).join('\n');
+    ta.classList.add('flash');
+    setTimeout(function () { ta.classList.remove('flash'); }, 1800);
+    setTimeout(function () { var n = form.querySelector('input[name="name"]'); if (n) n.focus({ preventScroll: true }); }, 600);
+  });
   if (calc) {
     calc.querySelectorAll('[data-k]').forEach(function (b) {
       b.addEventListener('click', function () { state[b.getAttribute('data-k')] = +b.getAttribute('data-v'); updateCalc(); });

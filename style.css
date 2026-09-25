@@ -80,7 +80,7 @@
 
   /* nav */
   header.nav{position:absolute;top:0;left:0;right:0;z-index:10;transition:background .25s}
-  header.nav.solid{position:fixed;background:rgba(14,27,46,.97);box-shadow:0 1px 0 #2A3D5A}
+  header.nav.solid{position:fixed;background:#0E1B2E;box-shadow:0 1px 0 #2A3D5A}
   header.nav.solid .wrap{height:76px}
   header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:96px;gap:24px}
   .brand{text-decoration:none;color:var(--white);display:flex;flex-direction:column;line-height:1.1}
@@ -372,3 +372,6 @@ body.plainnav header.nav{position:fixed;background:var(--midnight)}
 .range span{color:var(--slate);font-size:.88rem}
 @media (max-width:1020px){.uses{grid-template-columns:1fr}.uses>div+div{padding-left:0;border-left:none}.range{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.range{grid-template-columns:1fr}}
+
+.calc .out .btn{border-color:var(--champagne)}
+.form textarea.flash{outline:2px solid var(--champagne);transition:outline-color 1.5s}
