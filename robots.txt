@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /tender-watch.html
 
 Sitemap: https://orianamedi.com/sitemap.xml
