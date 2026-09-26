@@ -6,11 +6,16 @@
 <script>
 (function(){
   var saved=null; try{saved=localStorage.getItem('om-lang');}catch(e){}
-  var l=saved||(((navigator.language||'').toLowerCase().indexOf('sl')===0)?'sl':'en');
+  var ua=navigator.userAgent||'';
+  var l=saved||((/bot|crawl|spider|slurp/i.test(ua)||(navigator.language||'').toLowerCase().indexOf('sl')===0)?'sl':'en');
   document.documentElement.lang=l;
 })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E1B2E">
 <title>Politika zasebnosti | Oriana Medi</title>
 <link rel="canonical" href="https://orianamedi.com/privacy.html">
 </head>
@@ -30,7 +35,7 @@
         <ul class="l-en">
           <li><a href="index.html#izdelki">Products</a></li>
           <li><a href="index.html#bolnisnice">For hospitals</a></li>
-          <li><a href="index.html#proizvajalci">For manufacturers</a></li>
+          <li><a href="medical-device-distributor-slovenia.html">For manufacturers</a></li>
           <li><a href="index.html#kontakt">Contact</a></li>
         </ul>
       </nav>
@@ -79,7 +84,7 @@
 <footer>
   <div class="wrap">
     <span>&copy; 2026 Oriana Medi d.o.o. · Celjska cesta 47, 3252 Rogatec · <span class="l-sl">Matična št.</span><span class="l-en">Reg. no.</span> 9944800000 · <span class="l-sl">ID za DDV</span><span class="l-en">VAT</span> SI60729635</span>
-    <span><a href="privacy.html"><span class="l-sl">Politika zasebnosti</span><span class="l-en">Privacy policy</span></a></span>
+    <span><a href="medical-device-distributor-slovenia.html" hreflang="en">For manufacturers (EN)</a> · <a href="privacy.html"><span class="l-sl">Politika zasebnosti</span><span class="l-en">Privacy policy</span></a></span>
   </div>
 </footer>
 <script src="site.js"></script>

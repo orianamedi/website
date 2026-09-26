@@ -375,3 +375,7 @@ body.plainnav header.nav{position:fixed;background:var(--midnight)}
 
 .calc .out .btn{border-color:var(--champagne)}
 .form textarea.flash{outline:2px solid var(--champagne);transition:outline-color 1.5s}
+/* language links on the English-only manufacturer page */
+.lang a{color:#AEB8C7;font:600 .82rem Manrope,sans-serif;padding:7px 11px;letter-spacing:.06em;text-decoration:none}
+.lang a:hover{color:var(--white)}
+.lang a[aria-current="page"]{background:var(--champagne);color:var(--midnight)}
