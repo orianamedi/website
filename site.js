@@ -164,7 +164,7 @@
         (state.lots > 1 ? ' + ' + (state.lots - 1) + ' × ' + eur(P.extra) + (sl ? ' dodatni sklopi' : ' additional product groups') : '');
     } else {
       total = P.rebid;
-      br = eur(P.rebid) + (sl ? ' ponovna ponudba, dokumenti se ponovno uporabijo' : ' re-bid, documents reused');
+      br = eur(P.rebid) + (sl ? ' prijava ob ponovnem odpiranju konkurence, dokumenti se ponovno uporabijo' : ' re-bid, documents reused');
     }
     calc.querySelector('.js-sum').textContent = (sl ? 'od ' : 'from ') + eur(total);
     calc.querySelector('.js-br').textContent = br;
@@ -179,11 +179,11 @@
   if (reqBtn) reqBtn.addEventListener('click', function () {
     var sl = lang() === 'sl', P = FEES[state.plan];
     var planName = state.plan === 0 ? 'Tender Watch' : (sl ? 'Standard / Tender Alerts' : 'Standard / Tender Alerts');
-    var type = state.type === 0 ? (sl ? 'nova ponudba' : 'new bid') : (sl ? 'ponovna ponudba ob odpiranju sporazuma' : 're-bid at framework reopening');
+    var type = state.type === 0 ? (sl ? 'nov razpis' : 'new bid') : (sl ? 'ponovno odpiranje konkurence' : 're-bid at framework reopening');
     var lines = sl ? [
-      'Zanima nas priprava in oddaja ponudbe:',
+      'Zanima nas priprava in oddaja prijave na javni razpis:',
       '- Paket: ' + planName,
-      '- Vrsta ponudbe: ' + type,
+      '- Vrsta prijave: ' + type,
       state.type === 0 ? '- Število sklopov (skupin izdelkov): ' + state.lots : null,
       '- Informativni izračun: ' + calc.querySelector('.js-sum').textContent,
       '',
